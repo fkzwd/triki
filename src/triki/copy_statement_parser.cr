@@ -26,7 +26,7 @@ class Triki
 
           if !config.has_key?(current_table_name)
           # if !config[current_table_name]
-            Log.warn { "Deprecated: #{current_table_name} was not specified in the config.  A future release will cause this to be an error.  Please specify the table definition or set it to :keep." }
+            # Log.warn { "Deprecated: #{current_table_name} was not specified in the config.  A future release will cause this to be an error.  Please specify the table definition or set it to :keep." }
             inside_copy_statement = false
           end
 
