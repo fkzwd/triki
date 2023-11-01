@@ -101,7 +101,10 @@ class Triki
     config_columns - columns
   end
 
-  def check_for_defined_columns_not_in_table(table_name, columns)
+  def check_for_defined_columns_not_in_table(table_name, columns, ignore = true)
+    if ignore
+      return
+    end
     missing_columns = extra_column_list(table_name, columns)
     unless missing_columns.size == 0
       error_message = missing_columns.map do |missing_column|
@@ -136,8 +139,10 @@ class Triki
     when :keep
       line
     else
-      raise RuntimeError.new("table_config is not a hash") unless table_config.is_a?(ConfigTableHash)
-
+      # raise RuntimeError.new("table_config is not a hash") unless table_config.is_a?(ConfigTableHash)
+      if !table_config.is_a?(ConfigTableHash)
+        return line
+      end
       check_for_defined_columns_not_in_table(table_name, columns)
       check_for_table_columns_not_in_definition(table_name, columns) if fail_on_unspecified_columns?
       # Note: Remember to SQL escape strings in what you pass back.

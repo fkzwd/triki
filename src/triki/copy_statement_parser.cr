@@ -24,8 +24,10 @@ class Triki
           current_table_name = table_data["table_name"].as(String)
           current_columns = table_data["column_names"].as(ColumnList)
 
-          if !config[current_table_name]
+          if !config.has_key?(current_table_name)
+          # if !config[current_table_name]
             Log.warn { "Deprecated: #{current_table_name} was not specified in the config.  A future release will cause this to be an error.  Please specify the table definition or set it to :keep." }
+            inside_copy_statement = false
           end
 
           output_io.print(line)

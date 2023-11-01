@@ -16,7 +16,8 @@ class Triki
 
       table_config.each do |column, definition|
         index = columns.index(column)
-        raise "ERROR: Column #{column} does not exist" unless index
+        # raise "ERROR: Column #{column} does not exist" unless index
+        next unless index
 
         definition = {:type => definition} if definition.is_a?(Symbol)
 
