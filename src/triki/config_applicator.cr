@@ -108,7 +108,7 @@ class Triki
                         when :keep
                           row[index]?
                         else
-                          Log.warn { "Keeping a column value by providing an unknown type (#{definition[:type]}) is deprecated.  Use :keep instead." }
+                          # Log.warn { "Keeping a column value by providing an unknown type (#{definition[:type]}) is deprecated.  Use :keep instead." }
                           row[index]?
                         end
       end
