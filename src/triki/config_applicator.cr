@@ -87,6 +87,8 @@ class Triki
                           clean_bad_whitespace(faker.url)
                         when :integer
                           random_integer(between).to_s
+                        when :numbers
+                          faker.numbers(number)
                         when :fixed
                           if one_of.is_a?(Array)
                             one_of.sample.as(String | Int32)

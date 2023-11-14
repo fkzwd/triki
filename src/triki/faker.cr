@@ -17,6 +17,7 @@ class Triki
       abstract def ip_v4_address
       abstract def ip_v6_address
       abstract def url
+      abstract def numbers(cnt)
     end
 
     macro inherited
@@ -27,6 +28,10 @@ class Triki
   class Faker < FakerInterface
     def self.email
       ::Faker::Internet.email
+    end
+
+    def self.numbers(cnt)
+      ::Faker::Number.number(cnt)
     end
 
     def self.lorem(number)
